@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="topp">
+      <button (click)="showTableData()">View all details</button>
+      <div><h6>View details by Id</h6><input type="text" class="inp" placeholder="Enter the id" [(ngModel)]="userId"><button (click)="showTableDataofId()">View details</button></div></div>
+  
+      
+      <table *ngIf="showIdTable" class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userDetails">
+            <th scope="row">{{ user.id }}</th>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            
+              <td><button (click)="UpdateName(user)" class="delete">Update Name</button></td>
+            
+          </tr>
+        </tbody>
+      </table>
+      
+    <table  *ngIf="showTable" class="table">
+        <thead>
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of userDetails">
+          <tr>
+            <th scope="row">{{item.name}}</th>
+            <td>{{item.username}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td><button (click)="Update(item)" class="delete">Update</button></td>
+            <td><button (click)="Delete(item.id)" class="delete">Delete</button></td>
+      
+          </tr>   
+        </tbody>
+      </table>
+    
+    
+  </div>
